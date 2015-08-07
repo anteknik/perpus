@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" columnCount="4" pageWidth="595" pageHeight="842" columnWidth="138" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<queryString language="SQL">
+		<![CDATA[SELECT Inventaris.no_inventaris,
+                    Inventaris.kode_buku,
+                    buku.judul_buku,
+                    buku.jml_halaman,
+                    penerbit.nama_penerbit,
+                    pengarang.nama_pengarang,
+                    buku.thn_terbit,
+                    buku.isbn,
+                    kategori.nama_kategori,
+                    jenis_buku.nama_jenis,
+                    Inventaris.asal_buku,
+                    Inventaris.tgl_pengadaan,
+                    Inventaris.harga,
+                    Inventaris.status_buku,
+                    Ruang.nm_ruang,
+                    Inventaris.no_rak,
+                    Inventaris.no_box
+
+                    from inventaris,buku,ruang,pengarang,penerbit,kategori,jenis_buku
+                    where inventaris.kode_buku=buku.kode_buku
+                    and inventaris.kd_ruang=ruang.kd_ruang
+                    and buku.kode_penerbit=penerbit.kode_penerbit
+                    and buku.kode_pengarang=pengarang.kode_pengarang
+                    and buku.id_kategori=kategori.id_kategori
+                     and buku.id_jenis=jenis_buku.id_jenis order by Inventaris.no_inventaris]]>
+	</queryString>
+	<field name="no_inventaris" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kode_buku" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="judul_buku" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jml_halaman" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_penerbit" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_pengarang" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="thn_terbit" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isbn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_kategori" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_jenis" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="asal_buku" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tgl_pengadaan" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="harga" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status_buku" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nm_ruang" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_rak" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_box" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="1" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="1" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="95" splitType="Stretch">
+			<image scaleImage="RealSize">
+				<reportElement mode="Opaque" x="1" y="1" width="22" height="22"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Program Files\\Simpus Ver.1\\report\\bimbel.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="36" y="64" width="85" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nm_ruang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="36" y="75" width="39" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_rak}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="75" y="75" width="46" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_box}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="1" y="30" width="128" height="23"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false" barWidth="1" barHeight="0">
+					<jr:codeExpression><![CDATA[$F{no_inventaris}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<line>
+				<reportElement x="1" y="0" width="129" height="1" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="27" width="129" height="1" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="25" y="3" width="100" height="11"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[STIKES ISTARA NUSANTARA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="6" y="53" width="115" height="11"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{judul_buku}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="25" y="14" width="100" height="11"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kali Malang - Jakarta Timur]]></text>
+			</staticText>
+			<line direction="BottomUp">
+				<reportElement x="0" y="0" width="1" height="87" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="6" y="64" width="30" height="11"/>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<text><![CDATA[POSISI :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="86" width="129" height="1" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="130" y="0" width="1" height="87" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="6" y="75" width="30" height="11"/>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<text><![CDATA[RAK     :]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="1" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
